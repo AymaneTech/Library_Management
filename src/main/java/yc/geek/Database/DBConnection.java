@@ -2,30 +2,45 @@ package yc.geek.Database;
 
 import yc.geek.Utils.Print;
 
-public class Connection {
+import java.sql.*;
 
-  public static Connection instance = null;
-  private Connection connection = null;
+public class DBConnection {
 
-  private void init () {
-    final String url = "jdbc:pgsql//localhost/5432/org";
-    final String username = "postgres";
-    final String password = "admin";
+    private static DBConnection instance = null;
+    private Connection connection = null;
 
-    connection = DatabaseManager.getConnection(url, username, password);
+    private DBConnection() throws SQLException {
+        String url = "jdbc:postgresql://localhost:5432/library_management";
+        String username = "postgres";
+        String password = "admin";
+        try {
+            connection = DriverManager.getConnection(url, username, password);
+        } catch (SQLException e) {
+            Print.log(e.getMessage());
+        }
+    }
 
-    Print.log("the connection set with success !");
-  }
+    public Connection getConnection() {
+        return connection;
+    }
 
-  public Connection getConnection () {
-      return connection;
-  }
-
-  public static Connection getInstance() {
-    if(instance != null && !instance.getConnection().isClosed()) {
+    public static DBConnection getInstance() throws SQLException {
+        if (instance == null || !instance.connection.isClosed()) {
+            instance = new DBConnection();
+        }
         return instance;
-    } else {
-        new Connection();
-        instance.init();
+    }
+
+    public static boolean closeConnection() {
+        if (instance !=null){
+            try {
+                instance.getConnection().close();
+                instance = null;
+                return true;
+            } catch (SQLException e) {
+                Print.log(e.toString());
+            }
+        }
+        return false;
     }
 }

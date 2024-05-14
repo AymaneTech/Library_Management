@@ -1,0 +1,10 @@
+user_stories:
+  - "as a user i can create a new book by providing ( title, author, ISBN )"
+  - 'as a user i can list all books providing their (title, author, status ["AVAILABLE", "NOT_AVAILABLE"])'
+  - "as a user i can search books by their ( title or author )"
+  - "as a user i can borrow a book by providing its ISBN"
+  - "as a user i can return a borrowed book by providing its ISBN"
+  - "as a user i can list all borrowed books with borrower information and borrow date"
+  - "as a user i can remove a book by providing its ISBN"
+  - "as a user i can update book information by providing its ISBN"
+  - "as a user i can generate a report with stats on available, borrowed and lost books"

@@ -1,4 +1,4 @@
-package yc.geek.Database;
+package yc.geek.database;
 
 import yc.geek.Utils.Print;
 import java.sql.*;

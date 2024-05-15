@@ -1,15 +1,16 @@
-package yc.geek.DTOs;
+package yc.geek.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
-public class BookDTO {
+@AllArgsConstructor
+public class Book {
 
   private Long ISBN;
   private String title;
-  private String aurhor;
+  private String author;
 }

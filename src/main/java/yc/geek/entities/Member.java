@@ -1,4 +1,4 @@
-package yc.geek.Entities;
+package yc.geek.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -1,6 +1,5 @@
 package yc.geek.repositories;
 
-import com.sun.jdi.event.StepEvent;
 import yc.geek.Utils.Print;
 import yc.geek.database.DBConnection;
 import yc.geek.entities.Book;
@@ -20,7 +19,7 @@ public class BookRepository {
           db = DBConnection.getInstance().getConnection();
      }
 
-     public List<Book> getAllBooks() {
+     public List<Book> getAll() {
           List<Book> books = new ArrayList<>();
           String query = "SELECT * FROM books";
           try {

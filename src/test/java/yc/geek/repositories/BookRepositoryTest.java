@@ -2,6 +2,7 @@ package yc.geek.repositories;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import yc.geek.database.DBConnection;
 import yc.geek.entities.Book;
@@ -34,6 +35,7 @@ class BookRepositoryTest {
      }
 
      @Test
+     @DisplayName("test inserting a new book and retrieve it")
      void shouldInsertAndRetrieveBookByIsbn() throws SQLException {
           // Arrange
           Book expected = new Book(97979L, "hello book", "author");
@@ -47,6 +49,7 @@ class BookRepositoryTest {
      }
 
      @Test
+     @DisplayName("test throwing exception if book not exist")
      void shouldThrowExceptionWhenFindingNonexistentBook() {
           // Arrange - No need to insert a book since we are testing a negative case
 
@@ -57,6 +60,7 @@ class BookRepositoryTest {
      }
 
      @Test
+     @DisplayName("test deleting a book by his ISBN")
      void shouldDeleteBookByIsbn() throws SQLException {
           // Arrange
           Book book = new Book(1234567890L, "Test Book", "Test Author");
@@ -72,6 +76,7 @@ class BookRepositoryTest {
      }
 
      @Test
+     @DisplayName("test throwing an exception when trying to delete none existent book")
      void shouldThrowExceptionWhenDeletingNonexistentBook() {
           // Arrange - No need to insert a book since we are testing a negative case
           // Act & Assert

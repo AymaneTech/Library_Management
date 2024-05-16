@@ -65,10 +65,8 @@ class BookRepositoryTest {
           // Arrange
           Book book = new Book(1234567890L, "Test Book", "Test Author");
           bookRepository.save(book);
-
           // Act
           bookRepository.delete(1234567890L);
-
           // Assert
           assertThrows(SQLException.class, () -> {
                bookRepository.findByIsbn(1234567890L);
